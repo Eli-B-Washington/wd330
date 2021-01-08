@@ -15,31 +15,34 @@
       everything organized. Now that I have the template for the class, it should
       be easier going forward.
     </li>
+    <li>Below are the functions from the reading that were helpful for knowing local storage
+        and how it works.
+    </li>
     <li>
         function saveStory(){
-        12 var storyName = document.getElementById(“name_input”).value
-        13 var storyHTML = document.getElementById(“story_editor”).value
-        14 localStorage.setItem(storyName, storyHTML)
-        15 }
+        <br>var storyName = document.getElementById(“name_input”).value
+        <br>var storyHTML = document.getElementById(“story_editor”).value
+        <br>localStorage.setItem(storyName, storyHTML)
+        }
     </li>
     <li>
         function loadStory(){
-            7 var storyName = document.getElementById(“name_input”).value
-            8 var storyHTML = localStorage.getItem(storyName)
-            9 document.getElementById(“story_editor”).value = storyHTML
-           10 }
+            <br>var storyName = document.getElementById(“name_input”).value
+            <br>var storyHTML = localStorage.getItem(storyName)
+            <br>document.getElementById(“story_editor”).value = storyHTML
+        }
     </li>
  <li>
     function dsiplayStory(){
-        var storyHTML = document.getElementById(“story_editor”).value
-        document.getElementById(“story_display”).innerHTML = storyHTML
+        <br>var storyHTML = document.getElementById(“story_editor”).value
+        <br>document.getElementById(“story_display”).innerHTML = storyHTML
         }
     </li>
     </ul>
 
     <h2>Questions<h2>
         <ul>
-            <li>Why do you need to use value for textarea and innterHTML for a section?</li>
+            <li>Why do you need to use value for textarea and innerHTML for a section?</li>
             <ul>
 
 
