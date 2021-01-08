@@ -1,15 +1,32 @@
 const links = [
     {
-      label: "Week1 notes",
-      url: "week1/index.html"
-    }
-  ]
+    label: "Week1 assignments",
+    url: "week1/index.html"
+}
+,
+{
+    label: "Week2 assignments",
+    url: "week2/index.html"
+}
+]
 
-  var i = 0;
-  var length = links.length;
+  for (var i = 0; i <links.length; i++) {
+    // Create DOM element
+    var li = document.createElement('li');
+        
+    // Set text of element
+    li.textContent = "";
 
-  for (; i < length; ){
-    document.getElementById("list").innerHTML += links[i] + "<br>";
-    i++;
+    // Append this element to its parent
+    document.getElementById('list').appendChild(li);
+
+
+    var a = document.createElement('a');
+      var linkText = document.createTextNode(links[i].label);
+      a.appendChild(linkText);
+      a.title = links[i].label;
+      a.href = links[i].url;
+
+
+      li.appendChild(a);
   }
-  
