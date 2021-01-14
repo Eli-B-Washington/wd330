@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eli Bear's Team Assignment</title>
+  
+</head>
+
+
+<body>
+    <label for="number">Number:</label>
+    <input type="text" id="number" name="number"><br>
+    <label for="number2">Number2:</label>
+    <input type="text" id="number2" name="number2"><br>
+    <button type="button" onclick="Run()">Calculate</button>
+    <button type="button" onclick="add()">Add</button>
+    <button type="button" onclick="Subtract()">Subtract</button>
+    <button type="button" onclick="Run2()">Multiply</button>
+
+    <div id="answer1">
+        </div>
+        <div id="answer2">
+        </div>
+        <div id="answer3">
+        </div>
+        <div id="answer4">
+        </div>
+
+        <script>
+            function Calculate(x){
+                return x*(x+1)/2;
+            }
+
+            function Run(){
+                let x = parseInt(document.getElementById("number").value);
+                if (isNaN(x)) 
+                {
+                alert("Must input numbers");
+                }
+                else{
+                    y = Calculate(x);
+                    document.getElementById("answer1").innerHTML = y;
+                }
+            }
+
+            function add(){
+                const x = parseInt(document.getElementById("number").value);
+                const y = parseInt(document.getElementById("number2").value);
+                document.getElementById("answer2").innerHTML = x+y;
+            }
+
+            let Subtract = function() {
+            const x = parseInt(document.getElementById("number").value);
+            const y = parseInt(document.getElementById("number2").value);
+            document.getElementById("answer3").innerHTML = x-y;
+            };
+            
+            Multiply = (x,y) => x*y;
+
+            function Run2(){
+                const x = parseInt(document.getElementById("number").value);
+                const y = parseInt(document.getElementById("number2").value);
+                z = Multiply(x,y)
+                document.getElementById("answer4").innerHTML = z;
+            }
+
+
+        </script>
+
+</body>
+
+</html>
