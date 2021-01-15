@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eli Bear's Week Notes</title>
+  
+</head>
+
+
+<body>
+  <h1>Week 02 Notes</h1>
+
+<pre>
+ Using const and let to declare variables means they are block scoped, so their
+value only exists inside the block they are declared in.
+
+Javascripts built in functions use camelCase.
+
+
+Const - you cannot change the value later on
+Let - you can update the value in a function block
+var - normally shouldn't be used
+
+
+Lots of good functions in the readings that i tend to forget about, like
+name.endsWith('A'); or name.charAt(1);
+
+
+.pop() to remove the last item of an array.
+
+The join() method can be used to turn the array into a string that comprises all
+the items in the array, separated by commas:
+
+.indexOf to find the value of a particular item
+
+One thing I haven't looked into too is maps.
+
+to declare a new map()
+const romanNumerals = new Map();
+
+to set a value-
+romanNumerals.set(1,'I');
+
+to set multiple at a time-
+romanNumerals.set(2,'II').set(3,'III').set(4,'IV').set(5,'V')
+➥ ; Map { 1 => 'I', 2 => 'II', 3 => 'III', 4
+
+here is how to get the item based off of the key-
+romanNumerals.get(4);
+
+
+Basic function with a parameter and then the argument that you provide.
+function square(x){
+return x*x;
+}
+
+square(4.5);
+20.25
+
+
+I have never used a rest parameter so this was cool to learn about.
+
+We can use a rest parameter to improve our mean() function so it accepts any
+number of values:
+function mean(...values) {
+let total = 0;
+for(const value of values) {
+total += value;
+}
+return total/values.length;
+}
+</pre>
+
+
+  <h1>Questions</h1>
+  <p>I am still unsure of the reasons for declaring functions in different ways. Is it important to know them for just
+      the value of reading code?
+  </p>
+</body>
+
+</html>
