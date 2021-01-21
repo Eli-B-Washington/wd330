@@ -13,7 +13,134 @@
   <h1>Week 03 Notes</h1>
 
 <pre>
- 
+    I am still not used to function expressions so
+
+    user.sayHi = function() {
+      alert("Hello!");
+    };
+    
+    is somthing I will need to look out for.
+    
+    I liked this example from the reading about creating object literals
+    
+    const superman = {
+    name: 'Superman',
+    'real name': 'Clark Kent',
+    height: 75,
+    weight: 235,
+    hero: true,
+    villain: false,
+    allies: ['Batman','Supergirl','Superboy'],
+    fly() {
+    return 'Up, up and away!';
+    }
+    };
+    
+    to return the value name would be superman.name.
+    
+    superman["real" + " " + "name"]; being able to concatanize strings is one useful property of bracket notation.
+    
+    
+    ways to call a method
+    
+    superman.fly()
+     'Up, up and away!'
+    superman['fly']()
+     'Up, up and away!'
+    
+    adding properties to an object
+    
+    superman.city = 'Metropolis';
+    'Metropolis'
+    
+    deleting:
+    delete superman.fly
+     true
+    
+    access nested objects
+    jla.wonderWoman.realName
+    
+    
+    
+    All of these things are review so far for me but good to remember.
+    
+    I like this example of including functions within object literals to make sure that you don't use a name twice:
+    
+    const myMaths = {
+    square(x) {
+    return x * x;
+    },
+    mean(array,callback) {
+    if (callback) {
+    array.map( callback );
+    }
+    const total = array.reduce((a, b) => a + b);
+    return total/array.length;
+    }
+    };
+    Now these functions need to be preceded by the namespace to be invoked:
+    myMaths.square(3)
+     9
+    myStats.mean([1,2,3])
+    2
+    
+    stringify() returns a string of JSON data - I was confused about this last semester and thought it did the opposite.
+    
+    
+    This formula is for finding a random number between 1 and 5.
+    Math.floor(6 * Math.random());
+     4
+    
+    
+    Chapter 6,
+    Document Object Model
+    The DOM provides several methods that allow us to access any element on a
+    page. 
+    
+    Every id attribute should be unique to just one element.
+    
+    getElementsByTagName() returns all elements with the same tag name.
+    
+    get elements by class name
+    const heroes = document.getElementsByClassName('hero');
+    heroes.length to cound the number of elements with the tag name 'hero'
+    
+    const heroes = document.getElementById('roster');
+    heroes.childNodes
+     NodeList [#text "
+    ", <li class="hero">, #text "
+    ", <li id="bats">, #text "
+    ", <li class="hero">, #text "
+    ", <li class="hero">, #text "
+    
+    Chapter 6 gives a lot of good examples of functions to work with elements on a page.
+    
+    
+    You can use javascript to update CSS properties. superman.style.backgroundColor = "red";
+    
+    the display property in this case is really useful.
+    superman.style.display = 'none';
+     "none"
+    
+    Chapter 7 - Events
+    
+    I never knew the event handlers were not recommended to be inline. So that is definitely something
+    I will need to look at
+    
+    document.body.addEventListener('click',doSomething);
+    
+    addEventListener('click', () => alert('You Clicked!'));
+    
+    
+    function doSomething() {
+    alert('You Clicked!');
+    }
+    
+    addEventListener('click',doSomething);
+    
+    Note that the parentheses are not placed after the function when it’s used as the
+    argument to an event listener; otherwise, the function will actually be called
+    when the event listener is set, instead of when the event happens!
 </pre>
 
 
