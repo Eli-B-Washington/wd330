@@ -8,20 +8,28 @@
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
     <div id="answers">
       </div>
+      <br>
       <div id="answers2">
       </div>
+      <br>
       <div id="answers3">
       </div>
+      <br>
       <div id="answers4">
       </div>
+      <br>
       <div id="answers5">
       </div>
+      <br>
       <div id="answers6">
       </div>
+      <br>
       <div id="answers7">
       </div>
+      <br>
       <div id="answers8">
       </div>
+      <br>
     <script>
       // Get your shorts on - this is an array workout!
       // ## Array Cardio Day 1
@@ -94,7 +102,7 @@
       return e.year > 1500;
       });
 
-      document.getElementById("answers").innerHTML  = JSON.stringify(newInventors);
+      console.table(newInventors);
 
       // Array.prototype.map()
       // 2. Give us an array of the inventors' first and last names
@@ -102,17 +110,28 @@
       return name.first + " " + name.last;
       });
 
-      document.getElementById("answers2").innerHTML  = JSON.stringify(names);
+      console.table(names);
+
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
 
-      document.getElementById("answers2").innerHTML  = JSON.stringify(newInventors.year.sort());
+      const ordered = inventors.sort((a,b) => a.year > b.year ? 1: -1);
+      console.table(ordered);
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live?
+      const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+      }, 0);
+      console.log(totalYears);
 
       // 5. Sort the inventors by years lived
-
+      const oldest = inventors.sort(function(a, b) {
+      const lastInventor = a.passed - a.year;
+      const nextInventor = b.passed - b.year;
+      return lastInventor > nextInventor ? -1 : 1;
+    });
+    console.table(oldest);
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
       // goto the link above and open the console. Paste the following two lines in.  That will create a list of links in memory that you can reference through the console. Use that list to finish the problem.
