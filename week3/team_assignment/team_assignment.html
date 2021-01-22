@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +6,22 @@
   </head>
   <body>
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <div id="answers">
+      </div>
+      <div id="answers2">
+      </div>
+      <div id="answers3">
+      </div>
+      <div id="answers4">
+      </div>
+      <div id="answers5">
+      </div>
+      <div id="answers6">
+      </div>
+      <div id="answers7">
+      </div>
+      <div id="answers8">
+      </div>
     <script>
       // Get your shorts on - this is an array workout!
       // ## Array Cardio Day 1
@@ -75,11 +90,23 @@
       // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
 
+      let newInventors = inventors.filter(function (e) {
+      return e.year > 1500;
+      });
+
+      document.getElementById("answers").innerHTML  = JSON.stringify(newInventors);
+
       // Array.prototype.map()
       // 2. Give us an array of the inventors' first and last names
+      var names = inventors.map(function(name) {
+      return name.first + " " + name.last;
+      });
 
+      document.getElementById("answers2").innerHTML  = JSON.stringify(names);
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
+
+      document.getElementById("answers2").innerHTML  = JSON.stringify(newInventors.year.sort());
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live?
