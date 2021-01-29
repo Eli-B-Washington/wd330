@@ -13,6 +13,160 @@
   <h1>Week 04 Notes</h1>
 
 <pre>
+Chapter 8 - Forms
+
+One thing I need to work on is event listeners.  I tend to write javascript to do these tasks because I learned javascript first.
+
+const input = form.elements.searchInput;
+
+input.addEventListener('focus', () => alert('focused'),
+➥ false);
+
+
+The example below shows the form not submitting.
+
+const form = document.forms['search'];
+form.addEventListener ('submit', search, false);
+function search() {
+alert(' Form Submitted');
+}
+
+function search(event) {
+  alert('Form Submitted');
+  event.preventDefault();
+  }
+
+  //
+  input.addEventListener('focus', function(){
+    if (input.value==='Search Here') {
+    input.value = ''
+    }
+    }, false);
+    input.addEventListener('blur', function(){
+    if(input.value === '') {
+    input.value = 'Search Here';
+    } }, false);
+    
+This is to set focus on a form field
+    document.forms.hero.heroName.focus();
+
+ To iterate over a checkbox:
+ hero.powers = [];
+for (let i=0; i (lessthan) form.powers.length; i++) {
+if (form.powers[i].checked) {
+hero.powers.push(form.powers[i].value);
+}
+}
+
+
+The event.preventDefault() is actually something that I have never used for form validation but it seems pretty easy to use.
+
+This is to add an error message on a keyup event:
+
+const label = form.querySelector('label');
+const error = document.createElement('div');
+error.classList.add('error');
+error.textContent = '! Your name is not allowed to start
+➥ with X.';
+label.append(error);
+function validateInline() {
+const heroName = this.value.toUpperCase();
+if(heroName.startsWith('X')){
+error.style.display = 'block';
+} else {
+error.style.display = 'none';
+Forms 311
+}
+}
+
+
+This is the css so that the error does not appear initially:
+
+  .error{
+  background: #f99;
+  border: #900 1px solid;
+  display: none;
+  }
+
+Chapter 12: Object Oriented Programming
+encapsulation:  keeping all the programming logic inside an object
+polymorphism: the same process can be used for different objects.
+inheritance: taking the features of one object then adding some new
+features.
+
+
+
+
+Javascript class declaration
+
+class Dice {
+  constructor(sides=6) {
+  this.sides = sides;
+  }
+  roll() {
+  return Math.floor(this.sides * Math.random() + 1)
+  }
+  }
+
+JavaScript uses a prototypal inheritance model. This means that every class has a
+prototype property that is shared by every instance of the class. 
+
+i was wondering what prototype meant when working with array functions.
+
+By default, an object’s methods are public in JavaScript.
+
+All objects have a constructor property that returns the constructor function that
+created it.
+
+Changing the value of a prototype will change the value in all instances of the class.
+
+
+The following shows how an object instance can overwrite properties of the methods inherited:
+
+leo.weapon = 'Katana Blades';
+Overwriting a Prototype
+It is not possible to overwrite the prototype by assigning it to a new object literal if
+class declarations are used:
+Turtle.prototype = {}
+ {}
+Even though it looks like the prototype has been reassigned to an empty object
+literal, we can see see it hasn’t actually changed:
+Turtle.prototype
+ Turtle { attack: [Function], weapon: 'Feet' }
+It is possible to do this if constructor functions are used, and it can cause a lot of
+headaches if you accidentally redefine the prototype. This is because any instances
+that have already been created will retain the properties and methods of the old
+prototype, but will not receive any of the new properties and methods that are
+subsequently added to the redefined prototype.
+This is another reason why it’s recommended to use class declarations instead of
+constructor functions.
+454 JavaScript: Novice to Ninja, 2nd Edition
+ 'Katana Blades';
+raph.weapon = 'Sai';
+ 'Sai'
+don.weapon = 'Bo Staff';
+'Bo Staff'
+
+properties can be enumerable or non-enumerable.  Enumerable means it can be "seen" by a for-in loop.
+
+You can inherit with the word extends just like in java.
+
+A mixin is a way to add a has-a relationship.
+
+
+Chapter 15
+
+Modular Javascript - a self-contained piece of code that provides functions and methods.
+
+
+For example, a very simple Pi module would have the following code saved in a
+file called pi.js
+
+this is how you would import it:
+import { PI } from './pi.js';
+
+
+
 </pre>
 
 
