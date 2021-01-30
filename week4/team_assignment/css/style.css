@@ -1,0 +1,22 @@
+main {
+    background-color:gray;
+    max-width: 50%;
+
+}
+
+  /* Styles for the div based board */
+  .divBoard {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    justify-content: center;
+    
+  }
+  .divBoard > div {
+    /* border-right: 1px solid;
+    border-bottom: 1px solid; */
+    border: 1px solid;
+    font-size: 5em;
+    text-align: center;
+    background-color: lightblue;
+  }
