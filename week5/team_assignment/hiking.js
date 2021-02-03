@@ -54,7 +54,7 @@ export default class Hikes {
   }
   //show a list of hikes in the parentElement
   showHikeList() {
-    this.parentElement.innerHTML = '';
+    this.parentElement.innerHTML = "";
     // notice that we use our getter above to grab the list instead of getting it directly...this makes it easier on us if our data source changes...
     renderHikeList(this.parentElement, this.getAllHikes());
     this.addHikeListener();
@@ -86,7 +86,6 @@ export default class Hikes {
     backButton.addEventListener('touchend', () => {
       this.showHikeList();
     });
-    backButton.classList.add('hidden');
     this.parentElement.before(backButton);
     return backButton;
   }
