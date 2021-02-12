@@ -54,7 +54,7 @@
     font-size: 1rem;
   }
   
-  .add-button {
+  button {
     background-color: #0000ff;
     color: #fff;
     border: none;
@@ -110,6 +110,17 @@
   .checked { 
     text-decoration: line-through;
   }
+
+  .all-items{
+      list-style-type: none;
+      color: #fff;
+      
+  }
+  .all-items li{
+    display: inline;
+    padding: 1em;
+  }
+
   
   /* todo-items style ends */
   
