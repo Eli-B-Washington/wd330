@@ -1,216 +1,187 @@
-// select everything
-// select the todo-form
-const todoForm = document.querySelector('.todo-form');
-// select the input box
-const todoInput = document.querySelector('.todo-input');
-// select the <ul> with class="todo-items"
-const todoItemsList = document.querySelector('.todo-items');
 
-const allButton = document.querySelector('#allButton');
+let toDoList = null; 
 
-// array which stores every todos
-let todos = [];
-
-// add an eventListener on form, and listen for submit event
-todoForm.addEventListener('submit', function(event) {
-  // prevent the page from reloading when submitting the form
-  event.preventDefault();
-  addTodo(todoInput.value); // call addTodo function with input box current value
-});
-
-// function to add todo
-function addTodo(item) {
-  // if item is not empty
-  if (item !== '') {
-    // make a todo object, which has id, name, and completed properties
-    const todo = {
-      id: Date.now(),
-      name: item,
-      completed: false
-    };
-
-    // then add it to todos array
-    todos.push(todo);
-    addToLocalStorage(todos); // then store it in localStorage
-
-    // finally clear the input box value
-    todoInput.value = '';
-  }
-}
-
-// function to render given todos to screen
-function renderTodos(todos) {
-  // clear everything inside <ul> with class=todo-items
-  todoItemsList.innerHTML = '';
-
-  // run through each item inside todos
-  todos.forEach(function(item) {
-    // check if the item is completed
-    const checked = item.completed ? 'checked': null;
-
-    // make a <li> element and fill it
-    const li = document.createElement('li');
-    // <li class="item"> </li>
-    li.setAttribute('class', 'item');
-    // <li class="item" data-key="20200708"> </li>
-    li.setAttribute('data-key', item.id);
-    /* <li class="item" data-key="20200708"> 
-          <input type="checkbox" class="checkbox">
-          Go to Gym
-          <button class="delete-button">X</button>
-        </li> */
-    // if item is completed, then add a class to <li> called 'checked', which will add line-through style
-    if (item.completed === true) {
-      li.classList.add('checked');
+export default class ToDos {
+    constructor(elementID) {
+        this.parentElement = document.getElementById(elementID);
+        this.LSkey = this.parentElement.id;
+    }
+    //add an item to the list
+    addToDo(){
+        //grab the user's input
+        const taskContent = document.getElementById('new_task');
+        //send to create the new item
+        saveToDo(this.LSkey, taskContent);
+        //refresh the list
+        this.showToDoList();
+    }
+    //show the list in the parent function
+    showToDoList(){
+        getToDos(this.LSkey);
+        renderToDoList(this.parentElement, toDoList);
+        if(toDoList != null){
+            this.addEventListeners();
+        }
     }
 
-    li.innerHTML = `
-      <input type="checkbox" class="checkbox" ${checked}>
-      ${item.name}
-      <button class="delete-button">X</button>
-    `;
-    // finally add the <li> to the <ul>
-    todoItemsList.append(li);
-  });
-}
-
-function renderCompletedTodos(todos) {
-  // clear everything inside <ul> with class=todo-items
-  todoItemsList.innerHTML = '';
-
-  // run through each item inside todos
-  todos.forEach(function(item) {
-    // check if the item is completed
-    const checked = item.completed ? 'checked': null;
-
-    // make a <li> element and fill it
-    const li = document.createElement('li');
-    // <li class="item"> </li>
-    li.setAttribute('class', 'item');
-    // <li class="item" data-key="20200708"> </li>
-    li.setAttribute('data-key', item.id);
-    /* <li class="item" data-key="20200708"> 
-          <input type="checkbox" class="checkbox">
-          Go to Gym
-          <button class="delete-button">X</button>
-        </li> */
-    // if item is completed, then add a class to <li> called 'checked', which will add line-through style
-    if (item.completed === true) {
-      li.classList.add('checked');
+    
+    addEventListeners() {
+        const listItems = Array.from(this.parentElement.children);
+        console.log(listItems);
+        if(listItems.length > 0 && listItems[0].children[0]){
+        listItems.forEach(item => {
+            //checkboxes
+            item.children[0].addEventListener('click', event => {
+                this.completeToDo(event.currentTarget.id);
+            })
+            //task removal buttons
+            item.children[2].addEventListener('click', event => {
+                this.removeItem(event.currentTarget.parentElement.children[0].id);
+            })
+        })}
     }
-
-    li.innerHTML = `
-      <input type="checkbox" class="checkbox" ${checked}>
-      ${item.name}
-      <button class="delete-button">X</button>
-    `;
-    // finally add the <li> to the <ul>
-    todoItemsList.append(li);
-  });
-}
-
-
-
-function renderRemainingTodos(todos) {
-  // clear everything inside <ul> with class=todo-items
-  todoItemsList.innerHTML = '';
-
-  // run through each item inside todos
-  todos.forEach(function(item) {
-    // check if the item is completed
-    const checked = item.completed ? 'checked': null;
-
-    // make a <li> element and fill it
-    // <li> </li>
-    const li = document.createElement('li');
-    // <li class="item"> </li>
-    li.setAttribute('class', 'item');
-    // <li class="item" data-key="20200708"> </li>
-    li.setAttribute('data-key', item.id);
-    /* <li class="item" data-key="20200708"> 
-          <input type="checkbox" class="checkbox">
-          Go to Gym
-          <button class="delete-button">X</button>
-        </li> */
-    // if item is completed, then add a class to <li> called 'checked', which will add line-through style
-    if (item.completed === true) {
-      li.classList.add('checked');
+    //toggle the checkbox on/off, change boolean of item to true/false
+    completeToDo(itemID) {
+        //find this individual task in the To Do List
+        let oneTask = toDoList.findIndex(task => task.id == itemID);
+        console.log(oneTask);
+        //swap the boolean value (true = false, false = true)
+        toDoList[oneTask].completed = !toDoList[oneTask].completed;
+        //send the updated array to LocalStorage        
+        lsHelpers.writeToLS(this.LSkey, toDoList);
+        //style the item
+        markDone(itemID);
     }
-
-    li.innerHTML = `
-      <input type="checkbox" class="checkbox" ${checked}>
-      ${item.name}
-      <button class="delete-button">X</button>
-    `;
-    // finally add the <li> to the <ul>
-    todoItemsList.append(li);
-  });
-}
-
-function countTodos(){
-  for(i=0;i<=todos.length;i++){
-    document.getElementById("tasks").innerHTML = "Total Remaining: " + i;
-  }
-}
-
-// function to add todos to local storage
-function addToLocalStorage(todos) {
-  // conver the array to string then store it.
-  localStorage.setItem('todos', JSON.stringify(todos));
-  // render them to screen
-  renderTodos(todos);
-}
-
-// function helps to get everything from local storage
-function getFromLocalStorage() {
-  const reference = localStorage.getItem('todos');
-  // if reference exists
-  if (reference) {
-    // converts back to array and store it in todos array
-    todos = JSON.parse(reference);
-    renderTodos(todos);
-  }
-}
-
-// toggle the value to completed and not completed
-function toggle(id) {
-  todos.forEach(function(item) {
-    // use == not ===, because here types are different. One is number and other is string
-    if (item.id == id) {
-      // toggle the value
-      item.completed = !item.completed;
+    //remove an item from the list
+    removeItem(itemID) {
+        let oneTask = toDoList.findIndex(task => task.id == itemID);
+        toDoList.splice(oneTask, 1);
+        lsHelpers.writeToLS(this.LSkey, toDoList);
+        this.showToDoList();
     }
-  });
-
-  addToLocalStorage(todos);
+    addTabListeners() {
+        //filter tabs
+        const listTabs = Array.from(document.querySelectorAll('.bottom-tab'));
+        listTabs.forEach(tab => {
+            tab.addEventListener('click', event => {
+                for (let item in listTabs){
+                    listTabs[item].classList.remove('selected-tab');
+                }
+                event.currentTarget.classList.add('selected-tab');
+                this.filterToDos(event.currentTarget.id);
+            })
+        })    
+    }
+    filterToDos(category){
+        category = filterBy(category);
+        const arrFilter = toDoList.filter(task => {
+            if (category != null){
+                return task.completed == category;
+            }
+            else {
+                return task;
+            }
+        })
+        renderToDoList(this.parentElement, arrFilter);
+        this.addEventListeners();
+    }
 }
 
-// deletes a todo from todos array, then updates localstorage and renders updated list to screen
-function deleteTodo(id) {
-  // filters out the <li> with the id and updates the todos array
-  todos = todos.filter(function(item) {
-    // use != not !==, because here types are different. One is number and other is string
-    return item.id != id;
-  });
-
-  // update the localStorage
-  addToLocalStorage(todos);
+function getToDos(key){
+    console.log(`getToDos invoked with ${key}`);
+    if (toDoList == null){
+        toDoList = [];
+        let arrLocal = lsHelpers.readFromLS(key);
+        console.log(arrLocal);
+        if(arrLocal != null){
+            arrLocal.forEach(task => toDoList.push(task));
+        }
+    }
+    console.log(toDoList);
+    return toDoList;
 }
 
-// initially get everything from localStorage
-getFromLocalStorage();
+function saveToDo(key, taskContent){
+    let taskArr = getToDos(key);
+    // generate an ID based on timestamp
+    let taskID = Date.now();
 
-// after that addEventListener <ul> with class=todoItems. Because we need to listen for click event in all delete-button and checkbox
-todoItemsList.addEventListener('click', function(event) {
-  // check if the event is on checkbox
-  if (event.target.type === 'checkbox') {
-    // toggle the state
-    toggle(event.target.parentElement.getAttribute('data-key'));
-  }
+    //create a task object using the entered data (incomplete by default)
+    //(only if a value has been entered)
+    if(taskContent && taskContent.value){
+        const newTask = {id: taskID, content: taskContent.value, completed: false};
+        taskArr.push(newTask);
+        lsHelpers.writeToLS(key,taskArr);
+        taskContent.classList.remove("error-input");
+        taskContent.value = '';
+    } else {
+        console.log('no task has been entered');
+        taskContent.classList.add("error-input");
+    }
+    taskContent.focus();
+}
 
-  // check if that is a delete-button
-  if (event.target.classList.contains('delete-button')) {
-    // get id from data-key attribute's value of parent <li> where the delete-button is present
-    deleteTodo(event.target.parentElement.getAttribute('data-key'));
-  }
-});
+//make the list show up in HTML
+function renderToDoList(parent, thisList) {
+    console.log(thisList);
+    parent.innerHTML = '';
+    if(thisList != null && thisList.length > 0){
+    thisList.forEach(taskObject => {
+        //console.log(taskObject);
+        parent.appendChild(renderOneToDo(taskObject));
+    })
+    }else {
+        const emptyList = document.createElement('li');
+        emptyList.innerHTML = `No Tasks Found`
+        parent.appendChild(emptyList);
+    }
+    updateCount(thisList);
+}
+
+//make one item show up in HTML
+function renderOneToDo(task) {
+    const oneTask = document.createElement('li');
+    task.completed ? oneTask.classList.toggle('completed') : '';
+    oneTask.innerHTML = 
+        `<input id="${task.id}" name="${task.content}" type="checkbox" value="none" ${task.completed ? 'checked' : ''}>
+        <label for="${task.id}">${task.content}</label>
+        <div class="remove">X</div>`;
+    return oneTask;
+}
+
+//update the counter at the bottom
+function updateCount(list){
+    const counter = document.getElementById('counter');
+    if(list != null) {
+        counter.innerHTML = `${list.length} Tasks Remaining`;
+    } else {
+        counter.innerHTML = `0 tasks found`;
+    }
+}
+
+//make a completed item style itself finished
+function markDone(itemID){
+    let taskContainer = document.getElementById(itemID).parentElement;
+    taskContainer.classList.toggle('completed');
+}
+
+//filter list by active, completed, or all
+function filterBy(category){
+    switch(category){
+        case 'filter-active':
+            category = false;
+            break;
+        case 'filter-completed':
+            category = true;
+            break;
+        case 'filter-all':
+            category = null;
+            break;
+    }
+    return category;
+}
+
+
+import * as lsHelpers from './ls.js';
+
+
