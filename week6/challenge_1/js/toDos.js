@@ -6,50 +6,43 @@ export default class ToDos {
         this.parentElement = document.getElementById(elementID);
         this.LSkey = this.parentElement.id;
     }
-    //add an item to the list
-    addToDo(){
-        //grab the user's input
-        const taskContent = document.getElementById('new_task');
-        //send to create the new item
-        saveToDo(this.LSkey, taskContent);
-        //refresh the list
-        this.showToDoList();
-    }
-    //show the list in the parent function
-    showToDoList(){
-        getToDos(this.LSkey);
-        renderToDoList(this.parentElement, toDoList);
-        if(toDoList != null){
-            this.addEventListeners();
-        }
-    }
 
-    
+    //add event listeners
     addEventListeners() {
         const listItems = Array.from(this.parentElement.children);
         console.log(listItems);
         if(listItems.length > 0 && listItems[0].children[0]){
         listItems.forEach(item => {
-            //checkboxes
             item.children[0].addEventListener('click', event => {
                 this.completeToDo(event.currentTarget.id);
             })
-            //task removal buttons
             item.children[2].addEventListener('click', event => {
                 this.removeItem(event.currentTarget.parentElement.children[0].id);
             })
         })}
     }
-    //toggle the checkbox on/off, change boolean of item to true/false
+
+        //add an item to the list
+        addToDo(){ 
+            const taskContent = document.getElementById('new_task');
+            saveToDo(this.LSkey, taskContent);
+            this.showToDoList();
+        }
+
+        //show the list in the parent function
+        showToDoList(){
+            getToDos(this.LSkey);
+            renderToDoList(this.parentElement, toDoList);
+            if(toDoList != null){
+                this.addEventListeners();
+            }
+        }
+
     completeToDo(itemID) {
-        //find this individual task in the To Do List
         let oneTask = toDoList.findIndex(task => task.id == itemID);
         console.log(oneTask);
-        //swap the boolean value (true = false, false = true)
         toDoList[oneTask].completed = !toDoList[oneTask].completed;
-        //send the updated array to LocalStorage        
         lsHelpers.writeToLS(this.LSkey, toDoList);
-        //style the item
         markDone(itemID);
     }
     //remove an item from the list
@@ -59,15 +52,15 @@ export default class ToDos {
         lsHelpers.writeToLS(this.LSkey, toDoList);
         this.showToDoList();
     }
-    addTabListeners() {
-        //filter tabs
-        const listTabs = Array.from(document.querySelectorAll('.bottom-tab'));
+
+    addTabListeners() { 
+        const listTabs = Array.from(document.querySelectorAll('.remaining'));
         listTabs.forEach(tab => {
             tab.addEventListener('click', event => {
                 for (let item in listTabs){
-                    listTabs[item].classList.remove('selected-tab');
+                    listTabs[item].classList.remove('selected');
                 }
-                event.currentTarget.classList.add('selected-tab');
+                event.currentTarget.classList.add('selected');
                 this.filterToDos(event.currentTarget.id);
             })
         })    
@@ -103,11 +96,8 @@ function getToDos(key){
 
 function saveToDo(key, taskContent){
     let taskArr = getToDos(key);
-    // generate an ID based on timestamp
     let taskID = Date.now();
 
-    //create a task object using the entered data (incomplete by default)
-    //(only if a value has been entered)
     if(taskContent && taskContent.value){
         const newTask = {id: taskID, content: taskContent.value, completed: false};
         taskArr.push(newTask);
@@ -115,7 +105,6 @@ function saveToDo(key, taskContent){
         taskContent.classList.remove("error-input");
         taskContent.value = '';
     } else {
-        console.log('no task has been entered');
         taskContent.classList.add("error-input");
     }
     taskContent.focus();
@@ -127,7 +116,6 @@ function renderToDoList(parent, thisList) {
     parent.innerHTML = '';
     if(thisList != null && thisList.length > 0){
     thisList.forEach(taskObject => {
-        //console.log(taskObject);
         parent.appendChild(renderOneToDo(taskObject));
     })
     }else {
@@ -153,9 +141,9 @@ function renderOneToDo(task) {
 function updateCount(list){
     const counter = document.getElementById('counter');
     if(list != null) {
-        counter.innerHTML = `${list.length} Tasks Remaining`;
+        counter.innerHTML = `${list.length} Task(s) -`;
     } else {
-        counter.innerHTML = `0 tasks found`;
+        counter.innerHTML = ` 0 Tasks -`;
     }
 }
 
@@ -168,13 +156,13 @@ function markDone(itemID){
 //filter list by active, completed, or all
 function filterBy(category){
     switch(category){
-        case 'filter-active':
+        case 'active':
             category = false;
             break;
-        case 'filter-completed':
+        case 'completed':
             category = true;
             break;
-        case 'filter-all':
+        case 'all':
             category = null;
             break;
     }

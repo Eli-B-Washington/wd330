@@ -47,6 +47,7 @@
   #counter{
       color:white;
       font-size:1.5em;
+      margin: auto;
   }
 
   
@@ -57,7 +58,7 @@
     outline: none;
     border-radius: 5px;
     padding: 7px;
-    font-size: 1.2rem;
+    font-size: 1.4em;
   }
   
   #todo{
@@ -67,8 +68,6 @@
     display: flex;
     align-items:center;   
 }
-
-
 
 .remove {
     font-weight: bold;
@@ -91,6 +90,14 @@ input{
 
 }
 
-.completed {
+.completed{
   text-decoration: line-through;
+}
+
+main{
+  padding-bottom:5rem;
+}
+
+main h1{
+  padding-bottom:1rem;
 }
