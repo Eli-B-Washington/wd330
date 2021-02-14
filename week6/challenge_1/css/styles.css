@@ -63,12 +63,20 @@
   #todo{
       display: inline;
   }
+  #todo li{
+    display: flex;
+    align-items:center;   
+}
 
-  .remove {
+
+
+.remove {
     font-weight: bold;
     font-size: 2em;
     color: blue; /* midnight blue */
     flex-shrink: 0;
+    margin-left: auto;
+    padding-right:1rem;
 }
 .remove:hover {
     color: red; /* Glaucous */
@@ -81,4 +89,8 @@ input{
     border-color:white;
     border-style: solid;
 
+}
+
+.completed {
+  text-decoration: line-through;
 }
