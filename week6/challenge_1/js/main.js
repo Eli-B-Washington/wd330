@@ -10,12 +10,12 @@ const inputField = document.getElementById('new_task');
 const addNew = document.getElementById('addnew');
 
 
-/*inputField.addEventListener('keyup', function(event) {
+inputField.addEventListener('keyup', function(event) {
   if(event.keyIdentifier !== undefined) {
     event.preventDefault();
     addNew.click();
   }
-});*/
+});
 
 addNew.addEventListener('click', () => {
   myToDoList.addToDo();
