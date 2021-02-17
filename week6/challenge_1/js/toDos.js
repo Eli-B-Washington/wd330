@@ -170,6 +170,6 @@ function filterBy(category){
 }
 
 
-import * as lsHelpers from 'ls.js';
+import * as lsHelpers from './ls.js';
 
 
