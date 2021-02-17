@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eli Bear's Week 7 Notes</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  
+</head>
+
+
+<body>
+  <h1>Week 07 Notes</h1>
+
+<pre>
+
+  Chaper 11 - Further Functions
+
+  A good example of calling a function that has an object.
+
+  function sayHello(){
+    return `Hello, my name is ${ this.name }`;
+}
+
+const clark = { name: 'Clark' };
+const bruce = { name: 'Bruce' };
+sayHello.call(clark);
+'Hello, my name is Clarke'
+sayHello.call(bruce);
+'Hello, my name is Bruce'
+
+
+Immediately Invoked Function Expression - invoked as soon as it is defined.
+
+no need to create a name because it will only be used once. Example -
+(function() {
+  const name = 'Peter Parker'; // This might be obtained from a cookie in reality
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday','Saturday'];
+  const date = new Date(),today = days[date.getDay()];
+  console.log(`Welcome back ${name}. Today is ${today}`);
+})();
+ 'Welcome back Peter Parker. Today is Tuesday'
+
+ Recursive Function - A recursive function is one that invokes itself until a certain condition is met.
+
+
+ Event-driven Asynchronous Programming  - allows functions to run out of order like click events.
+However can make code confusing to follow.
+
+Async functions  allow you to write asynchronous code as if it was synchronous.
+
+async function loadGame(userName) {
+  try {
+      const user = await login(userName);
+      const info = await getPlayerInfo (user.id);
+      // load the game using the returned info
+  }
+  catch (error){
+      throw error;
+  }
+}
+
+Returning Functions -
+function outer() {
+  const outside = 'Outside!';
+  function inner() {
+      const inside = 'Inside!';
+      console.log(outside);
+      console.log(inside);
+  }
+  return inner;
+}
+
+
+AJAX -
+Asynchronous Javascript XML.
+
+API - application programming interface.
+
+fetch('https://example.com/data')
+.then( // code that handles the response )
+.catch( // code that runs if the server returns an error )
+
+the blob() method is used to read a file of raw data
+
+
+example:
+
+const url = 'https:example.com/data';
+const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+const request = (url,{
+    headers: headers
+})
+fetch(request)
+.then( function(response) {
+    if(response.ok) {
+        return response;
+    }
+    throw Error(response.statusText);
+})
+.then( response => // do something with response )
+.catch( error => console.log('There was an error!') )
+
+const textButton = document.getElementById('number');
+const apiButton = document.getElementById('chuck');
+const outputDiv = document.getElementById('output');
+
+textButton.addEventListener('click', () => {
+  fetch(textURL)
+  .then( response => {
+      outputDiv.innerHTML = 'Waiting for response...';
+  if(response.ok) {
+      return response;
+  }
+      throw Error(response.statusText);
+  })
+  .then( response => response.text() )
+  .then( text => outputDiv.innerText = text )
+  .catch( error => console.log('There was an error:', error))
+},false);
+
+
+</pre>
+
+
+  <h1>Questions</h1>
+  <p>
+    When should you use strict mode and when should you not?
+
+    Functions that define and rewrite themselves seem like a confusing way to write code.  Why is 
+    this beneficial?
+
+  </p>
+</body>
+
+</html>
