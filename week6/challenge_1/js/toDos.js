@@ -10,7 +10,7 @@ export default class ToDos {
     //add event listeners
     addEventListeners() {
         const listItems = Array.from(this.parentElement.children);
-        console.log(listItems);
+        
         if(listItems.length > 0 && listItems[0].children[0]){
         listItems.forEach(item => {
             item.children[0].addEventListener('click', event => {
@@ -170,6 +170,6 @@ function filterBy(category){
 }
 
 
-import * as lsHelpers from './ls.js';
+import * as lsHelpers from 'ls.js';
 
 
