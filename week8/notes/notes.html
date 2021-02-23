@@ -14,16 +14,84 @@
   <h1>Week 08 Notes</h1>
 
 <pre>
+Translation - Translation functions allow you to move elements left, right, up, or down.
 
-  
- 
+transform: translateX(45px); - this will move object to the right 45px;
+Scaling: The scale(x,y) function scales an element by the defined factors horizontally then vertically.
+Rotate: I have used rotation previously to turn an object upside down.
+
+trasform origin - changes the center of the circle to create intricate shapes.
+
+Some browsers do not support those effects and so you must use other elements in their place.
+
+
+Here are the steps to create a simple transition using only CSS:
+
+Declare the original state of the element in the default style declaration.
+
+Declare the final state of your transitioned element; for example, a :hover state.
+
+Include the transition functions in your default style declaration using the transition properties, including: transition-property , transition-duration , transition-timing-function , and transition-delay . We’ll look at each of these and how they work shortly.
+
+-webkit- is needed for older browsers
+
+The transition-duration Property - states the duration of the transition
+
+Transition shorthand:
+
+.ad-ad2 h1 span {
+  transition-property: transform; 
+  transition-duration: 0.2s;  
+  transition-timing-function: ease-out;
+  transition-delay: 50ms;
+}
+
+.ad-ad2 h1 span {
+  transition: transform 0.2s ease-out 50ms;
+}
+
+
+KeyFrames
+To animate an element, you must first create a named animation and then
+attach it to an element in that element's property block.
+
+Chapter 12
+
+Eample Canvas Setup:
+"canvas id="myCanvas" class="myCanvas" width="200" height="200">
+  Sorry! Your browser doesn’t support Canvas.
+"/canvas>
+
+.myCanvas {
+  border: dotted 2px black;
+}
+
+
+to start drawing with javascript: 
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+
+important for drawing on the canvas is the coordinate system
+(0,0) is in the top-left corner.
+
+
+toDataUrl will create a URL with an image.
+
+I have done a little bit with SVG already but not heard of Raphael library.
+It makes drawing and animating with SVG much easier.
+
+
+
 </pre>
 
 
   <h1>Questions</h1>
   <p>
+    Is there a reason the text refers to "the canvas"? I can't help but feel like and elderly gentleman
+    who says "the google".
 
-  </p>
+    Because of the accessibiltiy concerns with Canvas, is it still widely used?
+    </p>
 </body>
 
 </html>
