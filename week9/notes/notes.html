@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eli Bear's Week 9 Notes</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  
+</head>
+
+
+<body>
+  <h1>Week 09 Notes</h1>
+
+<pre>
+
+  The Window Object - Chapter 9
+
+  Every JavaScript environment has a global object.
+
+  In a browser, the global object is the window.
+
+  x = 6;  // global variable created
+ 6
+window.x // same variable can be accessed as a property of the window object
+ 6
+// both variables are exactly the same
+window.x === x;
+true
+
+There are many different global functions that can be access by calling window.
+
+The assign() method can be used to load another resource from a URL provided as a parameter, for example:
+
+
+Each window object contains a document object.
+
+It as well contains many methods which you can call wil document."";
+For example.  Document.write("Hello World!")
+
+below woud write the same phrase without overwriting the document.
+h1>
+  script>document.write("Hello, world!")/script>
+/h1>
+
+you can create cookies with: document.cookie = "name=Superman"
+
+you can change a cookie by assigning a new value to an exisiting variable name.
+
+The setTimeOut() and setInterval() methods can be used to animate elements on a web page.
+
+HTML API's Chapter 14:
+
+
+example of storing information with localstorage.
+
+localStorage.setItem('name', 'Walter White');
+
+localStorage.getItem('name'); 
+"Walter White"
+
+
+You can also set the value by assignment:
+localStorage.name = 'Heisenberg'; 
+console.log(localStorage.name); 
+ "Heisenberg";
+
+ removeitem - 
+ localStorage.removeItem('name');
+
+ you can also use delete localStorage.name;
+
+ The Geolocation API is used to obtain the geographical position of the device.
+
+ Web Workers - allow for for processes to run in the background. 
+
+ Shared Web Workers - allow lots of different scripts on the same domain to access the same worker object;
+
+ Service Workers - allows a worker script to run in the background with the
+  added benefit of being able to intercept network requests.
+
+  WebSockets - allows two-way communication with a server.  Responses are pushed to the client as soon as they are
+  received.
+
+  Notifications - The Notification API allows you to show messages using the system's notifications
+
+  Multimedia - added ability to play music and video with javascript.
+  video.play();
+
+  
+</pre>
+
+
+  <h1>Questions</h1>
+  <p>
+
+    </p>
+</body>
+
+</html>

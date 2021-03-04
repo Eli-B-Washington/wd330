@@ -1,0 +1,40 @@
+Eli Bear - Project Proposal
+
+Baseball Statistics APP
+
+Purpose - This app will display statistical information for MLB Teams based on the year. It will show things such as
+homeruns, steals, hits, etc for a given year. 
+
+Audience - Baseball Fans.
+Data sources
+External API  - MLB Data, https://rapidapi.com/search/baseball
+localStorage - to store page information.
+
+
+Initial Module list -
+
+index.html
+styles.css
+main.js
+localStorage.js
+
+
+
+Wireframes for each view of your application. -  It will be SPA.(Will include wireframe) 
+
+
+Colors/Typography/specific Element styling
+- Colors to change based of the team selected. Font also to be something similar to Agency FB Black Condensed.
+Some baseball sounds to go with the buttons hopefully. 
+
+
+Schedule to provide yourself mile markers along the way to help you stay on target.
+
+wk10 - Set up outline and general placement of web application.  Begin coding.  Make sure API information
+can be pulled correctly from the source. 
+wk11 - First Draft of coding assignment completed.  Able to switch teams and display the information for each team.
+wk12 - Finish Final Draft.
+wk13 - Add additional features.  Work out any remaining bugs. Submit Assignment.
+
+
+
