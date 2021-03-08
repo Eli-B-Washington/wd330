@@ -43,6 +43,11 @@ const links = [
   label: "Week9 assignments",
   url: "week9/index.html"
 }
+,
+{
+  label: "Week10 assignments",
+  url: "week10/index.html"
+}
 ]
 
   for (var i = 0; i <links.length; i++) {
