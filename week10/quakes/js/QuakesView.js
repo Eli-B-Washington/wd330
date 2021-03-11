@@ -1,4 +1,4 @@
-  
+
 export default // Quake View handler
 class QuakesView {
   renderQuakeList(quakeList, listElement) {
