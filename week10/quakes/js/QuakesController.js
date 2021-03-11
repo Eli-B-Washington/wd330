@@ -21,7 +21,7 @@ export default class QuakesController {
     // use this as a place to grab the element identified by this.parent, do the initial call of this.intiPos(), and display some quakes by calling this.getQuakesByRadius()
     this.parentElement = document.querySelector(this.parent);
     await this.initPos();
-    this.getQuakesByRadius(100);
+    this.getQuakesByRadius(1000);
   }
   async initPos() {
     // if a position has not been set
@@ -40,13 +40,13 @@ export default class QuakesController {
     }
   }
 
-  async getQuakesByRadius(radius = 100) {
+  async getQuakesByRadius(radius = 1000) {
     //set a loading message in case it takes long to get the quakes
     this.parentElement.innerHTML = '<li>Loading...</li>';
     // get the list of quakes in the specified radius of the location
     const quakeList = await this.quakes.getEarthQuakesByRadius(
       this.position,
-      100
+      1000
     );
 
     // // render the list to html
