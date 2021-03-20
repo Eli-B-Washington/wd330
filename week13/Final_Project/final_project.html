@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Baseball Statistics SPA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <main>
+        <h1>Baseball Statistics App</h1>
+
+        <form action="">
+            
+            <label for="team">Select A Team: </label>
+            <select id="team">
+                <option id="arizona_diamondbacks" name="arizona_diamondbacks" value="1998">Arizona Diamondbacks</option>
+                <option id="atlanta_braves" name="atlanta_braves" value="1966">Atlanta Braves</option>
+                <option id="baltimore_orioles" name="baltimore_orioles" value="1954">Baltimore Orioles</option>
+                <option id="boston_red_sox" name="boston_red_sox" value="1908">Boston Red Sox</option>
+                <option id="chicago_cubs" name="chicago_cubs" value="1902">Chicago Cubs</option>
+                <option id="chicago_white_sox" name="chicago_white_sox" value="1904">Chicage White Sox</option>
+                <option id="cincinnati_reds" name="cincinnati_reds" value="1959">Cincinnati Reds</option>
+                <option id="cleveland_indians" name="cleveland_indians"  value="1915">Cleveland Indians</option>
+                <option id="colorado_rockies" name="colorado_rockies" value="1993">Colorado Rockies</option>
+                <option id="detroit_tigers" name="detroit_tigers" value="1901">Detroit Tigers</option>
+                <option id="houston_astros" name="houston_astros" value="1965">Houston Astros</option>
+                <option id="kansas_city_royals" name="kansas_city_royals" value="1969">Kansas City Royals</option>
+                <option id="los_angeles_angels" name="los_angeles_angels" value="1961">Los Angeles Angels</option>
+                <option id="los_angeles_dodgers" name="los_angeles_dodgers" value="1958">Los Angeles Dodgers</option>
+                <option id="miami_marlins" name="miami_marlins" value="1993">Miami Marlins</option>
+                <option id="milwaukee brewers" name="milwaukee brewers" value="1970">Milwaukee Brewers</option>
+                <option id="minnesota_twins" name="minnesota_twins" value="1961">Minnesota Twins</option>
+                <option id="new_york_yankees" name="new_york_yankees" value="1913">New York Yankees</option>
+                <option id="new_york_mets" name="new_york_mets" value="1962">New York Mets</option>
+                <option id="oakland_athletics" name="oakland_athletics" value="1968">Oakland Athletics</option>
+                <option id="philadelphia_phillies" name="philadelphia_phillies" value="1883">Philadelphia Phillies</option>
+                <option id="pittsburgh_pirates" name="pittsburgh_pirates" value="1891">Pittsburgh Pirates</option>
+                <option id="san_diego_padres" name="san_diego_padres" value="1969">San Diego Padres</option>
+                <option id="san_francisco_giants" name="san_francisco_giants" value="1958">San Francisco Giants</option>
+                <option id="seattle_mariners" name="seattle_mariners" value="1977">Seattle Mariners</option>
+                <option id="st_loius_cardinals" name="st_louis_cardinals" value="1900">St. Louis Cardinals</option>
+                <option id="tampa_bay_rays" name="tampa_bay_rays" value="1998">Tampa Bay Rays</option>
+                <option id="texas_rangers" name="texas_rangers" value="1972">Texas Rangers</option>
+                <option id="toronto_blue_jays" name="toronto_blue_jays" value="1977">Toronto Blue Jays</option>
+                <option id="washington_nationals" name="washington_nationals" value="2005">Washington Nationals</option>
+            </select>
+            <br>
+            <br>
+            <label for="year">Select A Year: </label>
+            <select id="year"></select>
+            
+
+        </form>
+    </main>
+
+    <script>
+        var club = team.addEventListener("input", function (e) { 
+        var year = getYear();
+        console.log(document.getElementById('team').name);  
+    });
+
+       var start = year.addEventListener("input", function (e) {
+       console.log(this.value);
+    });
+
+        function getYear(){
+        var start = parseInt(document.getElementById('team').value);
+        var end = new Date().getFullYear();
+        var options = "";
+        for (var year = start; year <= end; year++) {
+            options += "<option>" + year + "</option>";
+        }
+        document.getElementById("year").innerHTML = options;
+    }
+
+    //console.log(club , start)
+    </script>
+    <!--<script src="js/index.js" type="module"></script> -->
+</body>
+
+</html>
