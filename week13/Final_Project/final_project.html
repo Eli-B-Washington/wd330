@@ -52,20 +52,24 @@
             <br>
             <label for="year">Select A Year: </label>
             <select id="year"></select>
+
+            <button name="button" id="button">Click Me!</button>
             
 
         </form>
     </main>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+
         var club = team.addEventListener("input", function (e) { 
         var year = getYear();
-        console.log(document.getElementById('team').name);  
+        console.log(team.options[team.selectedIndex].id);
+        console.log(this.value);
     });
 
        var start = year.addEventListener("input", function (e) {
        console.log(this.value);
-    });
+   });
 
         function getYear(){
         var start = parseInt(document.getElementById('team').value);
@@ -76,6 +80,26 @@
         }
         document.getElementById("year").innerHTML = options;
     }
+
+
+
+
+    fetch("https://api-baseball.p.rapidapi.com/teams/statistics?league=1&season=2019&team=5", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "c1eed3bc67msh45ea31acdbf685dp1b3b6bjsn638c0b567e02",
+		"x-rapidapi-host": "api-baseball.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
+
+
+
 
     //console.log(club , start)
     </script>
