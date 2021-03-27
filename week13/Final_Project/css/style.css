@@ -25,6 +25,10 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
+main div{
+    max-width: 900px;
+}
+
 h1{
     font-size:4em; 
 }
@@ -61,3 +65,11 @@ p {
 .accent2 {
     background-color: var(--accent2-color)
 }
+
+
+.changeColor{
+    background-color: #f1d302;
+}
+
+
+option:checked { color: red; }
