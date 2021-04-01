@@ -20,7 +20,7 @@
     <main>
         <h1>Baseball Statistics App</h1>
         <h2>
-        This App will return baseball statistics for the top 10
+        This App will return baseball statistics for the top 5
         pitchers and hitters of a given year.
         </h2>
 
@@ -28,26 +28,126 @@
             <label for="year">Select A Year: </label>
             <select id="year"></select>
 
-            <button name="button" id="button" value="submit">Click Me!</button>   
+
+
+         
         </form>
 
-        <div class="result" id="result1"></div>
-        <div class="result" id="result2"></div>
-        <div class="result" id="result3"></div>
-        <div class="result" id="result4"></div>
-        <div class="result" id="result5"></div>
-        <div class="result" id="result6"></div>
-        <div class="result" id="result7"></div>
-        <div class="result" id="result8"></div>
-        <div class="result" id="result9"></div>
-        <div class="result" id="result10"></div>
+        <br>
 
+        <button name="button" id="button" onclick="goFunction()" >Click Me!</button>
+
+        <section class="players">
+        <div id="pitchers" class="pitchers">
+
+          <div  id="flip-card-1" class="flip-card" onclick="toggleNav('flip-card-1')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+              </div>
+              <div class="flip-card-back">
+              <div class="result" id="result1"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div  id="flip-card-2" class="flip-card" onclick="toggleNav('flip-card-2')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+              </div>
+              <div class="flip-card-back">
+              <div class="result" id="result2"></div>
+              </div>
+            </div>
+          </div>
+
+          <div  id="flip-card-3" class="flip-card" onclick="toggleNav('flip-card-3')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+              </div>
+              <div class="flip-card-back">
+              <div class="result" id="result3"></div>
+              </div>
+            </div>
+          </div> 
+
+          <div  id="flip-card-4" class="flip-card" onclick="toggleNav('flip-card-4')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+              </div>
+              <div class="flip-card-back">
+              <div class="result" id="result4"></div>
+              </div>
+            </div>
+          </div> 
+
+          <div  id="flip-card-5" class="flip-card" onclick="toggleNav('flip-card-5')">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+              </div>
+              <div class="flip-card-back">
+              <div class="result" id="result5"></div>
+              </div>
+            </div>
+          </div> 
+      
+        </div>
+
+      <div class="hitters">
+
+        <div  id="flip-card-6" class="flip-card" onclick="toggleNav('flip-card-6')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+            </div>
+            <div class="flip-card-back">
+            <div class="result" id="result6"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div  id="flip-card-7" class="flip-card" onclick="toggleNav('flip-card-7')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+            </div>
+            <div class="flip-card-back">
+            <div class="result" id="result7"></div>
+            </div>
+          </div>
+        </div>
+
+        <div  id="flip-card-8" class="flip-card" onclick="toggleNav('flip-card-8')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+            </div>
+            <div class="flip-card-back">
+            <div class="result" id="result8"></div>
+            </div>
+          </div>
+        </div> 
+
+        <div  id="flip-card-9" class="flip-card" onclick="toggleNav('flip-card-9')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+            </div>
+            <div class="flip-card-back">
+            <div class="result" id="result9"></div>
+            </div>
+          </div>
+        </div> 
+
+        <div  id="flip-card-10" class="flip-card" onclick="toggleNav('flip-card-10')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+            </div>
+            <div class="flip-card-back">
+            <div class="result" id="result10"></div>
+            </div>
+          </div>
+        </div> 
+        
+      </div>
+    </section>
 
     </main>
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
 
         var start = 1869;
@@ -59,79 +159,66 @@
         document.getElementById("year").innerHTML = options;
 
 
-var object = document.getElementById("button").addEventListener("click", goFunction);
-
+function goFunction(){
 var obj, dbParam, xmlhttp, myObj, x, txt = "";
 
-
-
-async function goFunction(){
-
-queryString = "?results='3'&sports_code='mlb'&sort_column='era'&season='1908'&game_type='R'&leader_hitting_repeater.col_in=era"
+var queryString = "?results='5'&sports_code='mlb'&sort_column='era'&season='1954'&game_type='R'&leader_hitting_repeater.col_in=era"
 var url = "https://mlb-data.p.rapidapi.com/json/named.leader_pitching_repeater.bam"
 
-fetch(url + queryString, {
+fetch(url + queryString,{
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "c1eed3bc67msh45ea31acdbf685dp1b3b6bjsn638c0b567e02",
 		"x-rapidapi-host": "mlb-data.p.rapidapi.com"
 	}
 })
-
 .then(response => response.json())
 .then(data => {
   console.log('Success:', data);
-
   var myObj = (data.leader_pitching_repeater.leader_pitching_mux.queryResults.row);
 
   txt += "<table border='1'>"
+  txt += "<th>" + "Name" + "</th>";
+  txt += "<th>" + "E.R.A." + "</th>";
+
+
+  for(i = 0; i < 6; i++){
   for (x in myObj) {
-        txt += "<th>" + "Name" + "</th>";
-        txt += "<th>" + "E.R.A." + "</th>";
+        
 
       txt += "<tr><td>" + myObj[x].name_display_first_last + "</td>";
       txt += "<td>" + myObj[x].era + "</td></tr>";
-      
+      console.log(i )
+      document.getElementById("result"+ toString(i)).innerHTML = txt;
     }
-    txt += "</table>"    
-    document.getElementById("result1").innerHTML = txt;
+    txt += "</table>";  
+  }
 
   //document.getElementById("result1").innerHTML = JSON.stringify(data);
   document.getElementById("result2").innerHTML =
   JSON.stringify(data.leader_pitching_repeater.leader_pitching_mux.queryResults.row);
 })
-
 .catch(err => {
 	console.error(err);
 });
 }
 
 
-goFunction();
+function getURL(){
+  var x = "https://mlb-data.p.rapidapi.com/json/named.leader_pitching_repeater.bam?results='5'&sports_code='mlb'&sort_column='era'&season='2017'&game_type='R'&leader_hitting_repeater.col_in=era";
+  return x;
+}
+
+
+function toggleNav(id) {
+    var updateElement1 = document.getElementById(id);
+    //toggle adds a class if it's not there or removes it if it is.
+    updateElement1.classList.toggle("open");
+}
 
 
 
 
-/*function loadDoc(url, cFunction) {
-          var xhttp;
-          xhttp=new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              cFunction(this);
-            }
-          };
-          xhttp.open("GET", url, true);
-          xhttp.send();
-        }
-
-        function myFunction1(xhttp) {
-          var obj = JSON.parse(xhttp.responseText);
-          var completed = JSON.stringify(obj);
-          console.log(obj);
-          document.getElementById("result1").innerHTML =
-          obj[0].gameplay;
-        }
-*/
     </script>
     <!--<script src="js/index.js" type="module"></script> -->
 </body>
