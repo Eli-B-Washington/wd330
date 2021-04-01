@@ -162,7 +162,7 @@
 function goFunction(){
 var obj, dbParam, xmlhttp, myObj, x, txt = "";
 
-var queryString = "?results='5'&sports_code='mlb'&sort_column='era'&season='1954'&game_type='R'&leader_hitting_repeater.col_in=era"
+var queryString = "?results='5'&sports_code='mlb'&sort_column='era'&season='1953'&game_type='R'&leader_hitting_repeater.col_in=era"
 var url = "https://mlb-data.p.rapidapi.com/json/named.leader_pitching_repeater.bam"
 
 fetch(url + queryString,{
@@ -177,22 +177,21 @@ fetch(url + queryString,{
   console.log('Success:', data);
   var myObj = (data.leader_pitching_repeater.leader_pitching_mux.queryResults.row);
 
-  txt += "<table border='1'>"
-  txt += "<th>" + "Name" + "</th>";
-  txt += "<th>" + "E.R.A." + "</th>";
 
 
-  for(i = 0; i < 6; i++){
+
+
   for (x in myObj) {
-        
+    txt += "<table border='1'>"
+    txt += "<th>" + "Name" + "</th>";
+    txt += "<th>" + "E.R.A." + "</th>";
 
       txt += "<tr><td>" + myObj[x].name_display_first_last + "</td>";
       txt += "<td>" + myObj[x].era + "</td></tr>";
-      console.log(i )
-      document.getElementById("result"+ toString(i)).innerHTML = txt;
+      document.getElementById("result1").innerHTML = txt;
     }
     txt += "</table>";  
-  }
+ 
 
   //document.getElementById("result1").innerHTML = JSON.stringify(data);
   document.getElementById("result2").innerHTML =
