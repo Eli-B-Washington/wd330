@@ -26,23 +26,56 @@
 
         <form action="">
             <label for="year">Select A Year: </label>
-            <select id="year"></select>
+            <select id="year">
+            </select>
+
+            <label for="pitching">Select A Pitching Stat: </label>
 
 
-
-         
+            <select id="pitching">
+              <option value="era">Earned Run Average</option>
+              <option value="avg">Batting Average Against</option>
+              <option value="slg">Slugging Percentage Against</option>
+              <option value="whip">Walks and Hits per innings pitched</option>
+              <option value="sv">Saves</option>
+              <option value="hr">Homeruns Against</option>
+              <option value="np">Number of Pitches</option>
+              <option value="k_9">Strikeouts per 9 innnings</option>
+              <option value="so">Strikeouts</option>
+              <option value="w">Wins</option>
+              <option value="l">Losses</option>
+            </select>
+            
+            <label for="hitting">Select A Hitting Stat: </label>
+            <select id="hitting">
+              <option value="avg">Batting Average</option>
+              <option value="hr">Home Runs</option>
+              <option value="h">Hits</option>
+              <option value="rbi">Runs Batted in</option>
+              <option value="bb">Walks</option>
+              <option value="sb">Stolen Bases</option>
+              <option value="ab">At-Bats</option>
+              <option value="so">Strikeouts</option>
+              <option value="slg">Slugging Percentage</option>
+              <option value="ops">On-Base Plus Slugging</option>
+            </select>
+            
         </form>
 
         <br>
 
-        <button name="button" id="button" onclick="goFunction()" >Click Me!</button>
+        <button name="button" id="button" class="button" onclick="goFunction();goFunction2()" >Crunch the Numbers</button>
 
         <section class="players">
+        
         <div id="pitchers" class="pitchers">
+          <h2>Top 5 Pitchers</h2>
 
           <div  id="flip-card-1" class="flip-card" onclick="toggleNav('flip-card-1')">
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front"> 1
+                <img class ="picture" src="img/pitcher-1.png" alt="Baseball Pitcher Image">
+
               </div>
               <div class="flip-card-back">
               <div class="result" id="result1"></div>
@@ -52,27 +85,30 @@
           
           <div  id="flip-card-2" class="flip-card" onclick="toggleNav('flip-card-2')">
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front"> 2
+                <img class ="picture" src="img/pitcher-2.png" alt="Baseball Pitcher Image">
               </div>
               <div class="flip-card-back">
               <div class="result" id="result2"></div>
               </div>
             </div>
           </div>
-
+          
           <div  id="flip-card-3" class="flip-card" onclick="toggleNav('flip-card-3')">
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front"> 3
+                <img class ="picture" src="img/pitcher-3.jpg" alt="Baseball Pitcher Image">
               </div>
               <div class="flip-card-back">
               <div class="result" id="result3"></div>
               </div>
             </div>
           </div> 
-
+          
           <div  id="flip-card-4" class="flip-card" onclick="toggleNav('flip-card-4')">
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front"> 4
+                <img  class ="picture" src="img/pitcher-4.jpg" alt="Baseball Pitcher Image">
               </div>
               <div class="flip-card-back">
               <div class="result" id="result4"></div>
@@ -82,7 +118,8 @@
 
           <div  id="flip-card-5" class="flip-card" onclick="toggleNav('flip-card-5')">
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front"> 5
+                <img class ="picture" src="img/pitcher-5.jpg" alt="Baseball Pitcher Image">
               </div>
               <div class="flip-card-back">
               <div class="result" id="result5"></div>
@@ -93,10 +130,12 @@
         </div>
 
       <div class="hitters">
+        <h2>Top 5 Hitters</h2>
 
         <div  id="flip-card-6" class="flip-card" onclick="toggleNav('flip-card-6')">
           <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front"> 1
+              <img class ="picture" src="img/hitter-1.png" alt="Baseball Hitter Image">
             </div>
             <div class="flip-card-back">
             <div class="result" id="result6"></div>
@@ -106,7 +145,8 @@
         
         <div  id="flip-card-7" class="flip-card" onclick="toggleNav('flip-card-7')">
           <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front"> 2
+              <img class ="picture" src="img/hitter-2.png" alt="Baseball Hitter Image">
             </div>
             <div class="flip-card-back">
             <div class="result" id="result7"></div>
@@ -116,7 +156,8 @@
 
         <div  id="flip-card-8" class="flip-card" onclick="toggleNav('flip-card-8')">
           <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front"> 3
+              <img class ="picture" src="img/hitter-3.jpg" alt="Baseball Hitter Image">
             </div>
             <div class="flip-card-back">
             <div class="result" id="result8"></div>
@@ -126,7 +167,8 @@
 
         <div  id="flip-card-9" class="flip-card" onclick="toggleNav('flip-card-9')">
           <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front"> 4
+              <img class ="picture" src="img/hitter-4.jpg" alt="Baseball Hitter Image">
             </div>
             <div class="flip-card-back">
             <div class="result" id="result9"></div>
@@ -136,7 +178,8 @@
 
         <div  id="flip-card-10" class="flip-card" onclick="toggleNav('flip-card-10')">
           <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front"> 5
+              <img class ="picture" src="img/hitter-5.jpg" alt="Baseball Hitter Image">
             </div>
             <div class="flip-card-back">
             <div class="result" id="result10"></div>
@@ -150,8 +193,8 @@
     </main>
     <script>
 
-        var start = 1869;
-        var end = new Date().getFullYear();
+        var start = 1876;
+        var end = new Date().getFullYear() -1;
         var options = "";
         for (var year = start; year <= end; year++) {
             options += "<option>" + year + "</option>";
@@ -162,7 +205,15 @@
 function goFunction(){
 var obj, dbParam, xmlhttp, myObj, x, txt = "";
 
-var queryString = "?results='5'&sports_code='mlb'&sort_column='era'&season='1953'&game_type='R'&leader_hitting_repeater.col_in=era"
+var year = document.getElementById("year").value.toString();
+console.log(year);
+var pitching = document.getElementById("pitching").value.toString();
+console.log(pitching);
+
+
+
+
+var queryString = "?results='5'&sports_code='mlb'&sort_column=" + pitching +"&season=" + year + "&game_type='R'";
 var url = "https://mlb-data.p.rapidapi.com/json/named.leader_pitching_repeater.bam"
 
 fetch(url + queryString,{
@@ -177,25 +228,25 @@ fetch(url + queryString,{
   console.log('Success:', data);
   var myObj = (data.leader_pitching_repeater.leader_pitching_mux.queryResults.row);
 
-
-
-
-
-  for (x in myObj) {
+  i = 0;
+  for (x = 0; x < 5; x++) {
+   
+    
+    i++;
     txt += "<table border='1'>"
     txt += "<th>" + "Name" + "</th>";
-    txt += "<th>" + "E.R.A." + "</th>";
+    txt += "<th>" + pitching + "</th>";
+    var answer = myObj[x][pitching];
 
       txt += "<tr><td>" + myObj[x].name_display_first_last + "</td>";
-      txt += "<td>" + myObj[x].era + "</td></tr>";
-      document.getElementById("result1").innerHTML = txt;
-    }
-    txt += "</table>";  
- 
+      txt += "<td>" + answer + "</td></tr>";
+      
+      txt += "</table>";
 
-  //document.getElementById("result1").innerHTML = JSON.stringify(data);
-  document.getElementById("result2").innerHTML =
-  JSON.stringify(data.leader_pitching_repeater.leader_pitching_mux.queryResults.row);
+
+      document.getElementById("result" + i.toString()).innerHTML = txt;
+      txt = "";
+    }
 })
 .catch(err => {
 	console.error(err);
@@ -203,21 +254,64 @@ fetch(url + queryString,{
 }
 
 
-function getURL(){
-  var x = "https://mlb-data.p.rapidapi.com/json/named.leader_pitching_repeater.bam?results='5'&sports_code='mlb'&sort_column='era'&season='2017'&game_type='R'&leader_hitting_repeater.col_in=era";
-  return x;
-}
+function goFunction2(){
+  
+  var obj, dbParam, xmlhttp, myObj, x, txt = "";
 
+  var year = document.getElementById("year").value.toString();
+  console.log(year);
+  var hitting = (document.getElementById("hitting").value).toString();
+  console.log(hitting);
+
+
+  var queryString2 = "?game_type='R'&sort_column=" + hitting + "&results='5'&season=" + year +"&sports_code='mlb'"
+  var url2 = "https://mlb-data.p.rapidapi.com/json/named.leader_hitting_repeater.bam"
+  console.log(queryString2 + url2);
+
+  fetch(url2 + queryString2,{
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "c1eed3bc67msh45ea31acdbf685dp1b3b6bjsn638c0b567e02",
+		"x-rapidapi-host": "mlb-data.p.rapidapi.com"
+	}
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+  var myObj = (data.leader_hitting_repeater.leader_hitting_mux.queryResults.row);
+  
+
+  i = 6;
+  for (x = 0; x < 5; x++) {
+   
+    
+    
+    txt += "<table border='1'>"
+    txt += "<th>" + "Name" + "</th>";
+    txt += "<th>" + hitting + "</th>";
+    var answer = myObj[x][hitting];
+
+      txt += "<tr><td>" + myObj[x].name_display_first_last + "</td>";
+      txt += "<td>" + answer + "</td></tr>";
+      
+      txt += "</table>";  
+
+
+      document.getElementById("result" + i.toString()).innerHTML = txt;
+      txt = "";
+      i++;
+    }
+})
+.catch(err => {
+	console.error(err);
+});
+}
 
 function toggleNav(id) {
     var updateElement1 = document.getElementById(id);
     //toggle adds a class if it's not there or removes it if it is.
     updateElement1.classList.toggle("open");
 }
-
-
-
-
     </script>
     <!--<script src="js/index.js" type="module"></script> -->
 </body>
