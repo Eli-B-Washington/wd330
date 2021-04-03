@@ -55,11 +55,6 @@ const links = [
 }
 ,
 {
-  label: "Week12 assignments",
-  url: "week12/index.html"
-}
-,
-{
   label: "Final Project",
   url: "week13/index.html"
 }
