@@ -25,7 +25,7 @@ const links = [
 }
 ,
 {
-  label: "Week6 assignments",
+  label: "Week6 assignments - Challenge 1",
   url: "week6/index.html"
 }
 ,
