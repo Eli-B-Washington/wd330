@@ -2,22 +2,25 @@
 
 :root {
     --primary-color: #c1292e;
-    --secondary-color: #235789;
+    --secondary-color:  rgb(83, 44, 44);
     --accent1-color: #f1d302;
     --accent2-color: #020100;
     --heading-font: Trebuchet MS;;
     --paragraph-font: Lato, Helvetica, sans-serif
 }
 
-html {
-    background-color: var(--secondary-color)
+body{
+    background: url(../img/hitter-5.jpg) repeat;
+    max-width:100%;
+    min-height: 100%;
 }
 
-body {
-    max-width: 900px;
+header, footer, main {
+    max-width: 950px;
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--secondary-color);
 }
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
@@ -25,18 +28,21 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
-main div{
-    max-width: 900px;
+label {
+    color: var(--accent1-color);
+    padding: 1em;
 }
 
 h1{
-    font-size:4em; 
+    font-size:4em;
+    padding: 1rem;
 }
 header {
-    padding: 1em;
     text-align: center;
     color: var(--accent2-color);
     background-color: var(--secondary-color);
+    padding-top: 10px;
+    padding-bottom:10px;
 }
 
 header>h1 {
@@ -46,7 +52,6 @@ header>h1 {
 p {
     font-family: var(--paragraph-font);
     color: var(--accent2-color);
-    padding: 1em
 }
 
 
@@ -79,6 +84,8 @@ option:checked { color: red; }
     width: 300px;
     height: 420px;
     perspective: 1000px;
+    padding-top: 40px;
+
   }
   
   .flip-card-inner {
@@ -88,7 +95,6 @@ option:checked { color: red; }
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(56, 40, 40, 0.2);
   }
   
   .flip-card.open .flip-card-inner {
@@ -104,67 +110,90 @@ option:checked { color: red; }
   }
   
   .flip-card-front {
-    background-color: #bbb;
+    background-color: var(--primary-color);
     color: black;
     width:300px;
     height:420px;
     border:solid;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
   }
   
   .flip-card-back {
-    background-color: var(--secondary-color);
+    background-color: rgb(160, 83, 83);
     color: white;
     transform: rotateY(180deg);
     border:solid black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
 .players{
     display:flex;
-    margin-left: 15%;
+    justify-content: space-evenly;
+
 }
 
 
 .button {
-	-moz-box-shadow: 14px 12px 10px -9px #707070;
-	-webkit-box-shadow: 14px 12px 10px -9px #707070;
-	box-shadow: 14px 12px 10px -9px #707070;
-	background:-moz-linear-gradient(top, #7892c2 5%, #396ba8 100%);
-	background:-webkit-linear-gradient(top, #7892c2 5%, #396ba8 100%);
-	background:-o-linear-gradient(top, #7892c2 5%, #396ba8 100%);
-	background:-ms-linear-gradient(top, #7892c2 5%, #396ba8 100%);
-	background:linear-gradient(to bottom, #7892c2 5%, #396ba8 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#396ba8',GradientType=0);
-	background-color:#7892c2;
-	-webkit-border-radius:19px;
-	-moz-border-radius:19px;
-	border-radius:19px;
-	border:6px solid #4e6096;
+	
+	border: solid 3px var(--primary-color);
 	display:inline-block;
 	cursor:pointer;
-	color:#ff0026;
+	color: var(--accent1-color);
+    background-color: var(--accent2-color);
 	font-family:Trebuchet MS;
 	font-size:25px;
 	font-weight:bold;
 	font-style:italic;
 	padding:24px 27px;
 	text-decoration:none;
-    margin-left:30%;
+    margin-left:1em;
 }
-.button:hover {
-	background:-moz-linear-gradient(top, #396ba8 5%, #7892c2 100%);
-	background:-webkit-linear-gradient(top, #396ba8 5%, #7892c2 100%);
-	background:-o-linear-gradient(top, #396ba8 5%, #7892c2 100%);
-	background:-ms-linear-gradient(top, #396ba8 5%, #7892c2 100%);
-	background:linear-gradient(to bottom, #396ba8 5%, #7892c2 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#396ba8', endColorstr='#7892c2',GradientType=0);
-	background-color:#396ba8;
-}
+
  .button:active {
 	position:relative;
 	top:1px;
 }
 
 .picture{
-    max-width: 300px;
-    max-height: 420px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card-border{
+    background-color: whitesmoke;
+    width: 250px;
+    height: 375px;
+    border-radius: 15px;
+    align-self:center;
+}
+
+.card-border-2{
+    border: var(--accent2-color) solid;
+    width: 250px;
+    height: 375px;
+    border-radius: 15px;
+    align-self:center;
+}
+
+table {
+    margin: 10px;
+    width: 225px;
+}
+
+table, th, td {
+    font-size: 1.2em;
+    border: solid;
+    color: black;
+    
 }
