@@ -125,8 +125,7 @@ option:checked { color: red; }
   }
   
   .flip-card-back {
-    background-color: rgb(160, 83, 83);
-    color: white;
+    background-color: white;
     transform: rotateY(180deg);
     border:solid black;
     width: 100%;
@@ -158,6 +157,11 @@ option:checked { color: red; }
 	padding:24px 27px;
 	text-decoration:none;
     margin-left:1em;
+}
+
+.button:hover{
+    background-color: var(--primary-color);
+    border-color: var(--accent2-color);
 }
 
  .button:active {
@@ -197,3 +201,10 @@ table, th, td {
     color: black;
     
 }
+
+
+@media only screen and (max-width: 650px) {
+    .players {
+        display:block;
+    }
+  }
