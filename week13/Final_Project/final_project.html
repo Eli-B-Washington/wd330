@@ -11,12 +11,7 @@
     5 pitchers and hitters of a given year.">
 
 
-<script>
-
-
-
-
-</script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -24,19 +19,20 @@
     <h1>Baseball Statistics App</h1>
         <h2>
         This App will return baseball statistics for the top 5
-        pitchers and hitters of a given year.
+        pitchers and hitters of a given year. Click on the button and then
+        the cards to see the results.  
         </h2>
   </header>
     <main>
         
-
-        <form action="">
-            <label for="year">Select A Year: </label>
+      <div id="form">
+        <form>
+            <label for="year">Select A Year: <br></label>
             <select id="year">
             </select>
             <br>
             <br>
-            <label for="pitching">Select A Pitching Stat: </label>
+            <label for="pitching">Select A Pitching Stat: <br></label>
 
 
             <select id="pitching">
@@ -54,7 +50,7 @@
             </select>
             <br>
             <br>
-            <label for="hitting">Select A Hitting Stat: </label>
+            <label for="hitting">Select A Hitting Stat: <br></label>
             <select id="hitting">
               <option value="avg">Batting Average</option>
               <option value="hr">Home Runs</option>
@@ -73,7 +69,7 @@
         <br>
 
         <button name="button" id="button" class="button" onclick="goFunction();goFunction2()" >Crunch the Numbers</button>
-
+      </div>        
         <section class="players">
         
         <div id="pitchers" class="pitchers">
@@ -100,7 +96,7 @@
               <div class="flip-card-front">
                 <div class="card-border">
               
-                <img class ="picture" src="img/pitcher-2.png" alt="Baseball Pitcher Image">
+                <img class ="picture" src="img/pitcher-7.jpg" alt="Baseball Pitcher Image">
               </div>
             </div>
             
@@ -116,7 +112,7 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="card-border">
-                <img class ="picture" src="img/pitcher-3.jpg" alt="Baseball Pitcher Image">
+                <img class ="picture border" src="img/pitcher-3.jpg" alt="Baseball Pitcher Image">
               </div>
             </div> 
               <div class="flip-card-back">
@@ -131,7 +127,7 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="card-border">
-                <img  class ="picture" src="img/pitcher-4.jpg" alt="Baseball Pitcher Image">
+                <img  class ="picture border" src="img/pitcher-4.jpg" alt="Baseball Pitcher Image">
               </div>
             </div>
               <div class="flip-card-back">
@@ -166,7 +162,7 @@
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="card-border">
-              <img class ="picture" src="img/hitter-2.png" alt="Baseball Hitter Image">
+              <img class ="picture border" src="img/hitter-2.png" alt="Baseball Hitter Image">
             </div>
           </div>
             <div class="flip-card-back">
@@ -181,7 +177,7 @@
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="card-border">
-              <img class ="picture" src="img/hitter-2.png" alt="Baseball Hitter Image">
+              <img class ="picture" src="img/hitter-6.jpg" alt="Baseball Hitter Image">
             </div>
           </div>
             <div class="flip-card-back">
@@ -196,7 +192,7 @@
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="card-border">
-              <img class ="picture" src="img/hitter-3.jpg" alt="Baseball Hitter Image">
+              <img class ="picture border" src="img/hitter-3.jpg" alt="Baseball Hitter Image">
             </div>
           </div>
             <div class="flip-card-back">
@@ -211,7 +207,7 @@
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="card-border">
-              <img class ="picture" src="img/hitter-4.jpg" alt="Baseball Hitter Image">
+              <img class ="picture border" src="img/hitter-4.jpg" alt="Baseball Hitter Image">
             </div>
           </div>
             <div class="flip-card-back">
@@ -242,129 +238,15 @@
 
     </main>
     <script>
-
-        var start = 1876;
-        var end = new Date().getFullYear() -1;
-        var options = "";
-        for (var year = start; year <= end; year++) {
-            options += "<option>" + year + "</option>";
-        }
-        document.getElementById("year").innerHTML = options;
-
-
-function goFunction(){
-var obj, dbParam, xmlhttp, myObj, x, txt = "";
-
-var year = document.getElementById("year").value.toString();
-console.log(year);
-var pitching = document.getElementById("pitching").value.toString();
-console.log(pitching);
-
-
-
-
-var queryString = "?results='5'&sports_code='mlb'&sort_column=" + pitching +"&season=" + year + "&game_type='R'";
-var url = "https://mlb-data.p.rapidapi.com/json/named.leader_pitching_repeater.bam"
-
-fetch(url + queryString,{
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "c1eed3bc67msh45ea31acdbf685dp1b3b6bjsn638c0b567e02",
-		"x-rapidapi-host": "mlb-data.p.rapidapi.com"
-	}
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-  var myObj = (data.leader_pitching_repeater.leader_pitching_mux.queryResults.row);
-
-  i = 0;
-  for (x = 0; x < 5; x++) {
-   
-    
-    i++;
-    txt += "<table>"
-    txt += "<th>" + "Name" + "</th>";
-    txt += "<th>" + pitching + "</th>";
-    var answer = myObj[x][pitching];
-
-      txt += "<tr><td>" + myObj[x].name_display_first_last + "</td>";
-      txt += "<td>" + answer + "</td></tr>";
-      
-      txt += "</table>";
-
-
-      document.getElementById("result" + i.toString()).innerHTML = txt;
-      txt = "";
-    }
-})
-.catch(err => {
-	console.error(err);
-});
+      var start = 1876;
+var end = new Date().getFullYear() -1;
+var options = "";
+for (var year = start; year <= end; year++) {
+    options += "<option>" + year + "</option>";
 }
-
-
-function goFunction2(){
-  
-  var obj, dbParam, xmlhttp, myObj, x, txt = "";
-
-  var year = document.getElementById("year").value.toString();
-  console.log(year);
-  var hitting = (document.getElementById("hitting").value).toString();
-  console.log(hitting);
-
-
-  var queryString2 = "?game_type='R'&sort_column=" + hitting + "&results='5'&season=" + year +"&sports_code='mlb'"
-  var url2 = "https://mlb-data.p.rapidapi.com/json/named.leader_hitting_repeater.bam"
-  console.log(queryString2 + url2);
-
-  fetch(url2 + queryString2,{
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "c1eed3bc67msh45ea31acdbf685dp1b3b6bjsn638c0b567e02",
-		"x-rapidapi-host": "mlb-data.p.rapidapi.com"
-	}
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-  var myObj = (data.leader_hitting_repeater.leader_hitting_mux.queryResults.row);
-  
-
-  i = 6;
-  for (x = 0; x < 5; x++) {
-   
-    
-    
-    txt += "<table>"
-    txt += "<th>" + "Name" + "</th>";
-    txt += "<th>" + hitting + "</th>";
-    var answer = myObj[x][hitting];
-
-      txt += "<tr><td>" + myObj[x].name_display_first_last + "</td>";
-      txt += "<td>" + answer + "</td></tr>";
-      
-      txt += "</table>";  
-
-
-      document.getElementById("result" + i.toString()).innerHTML = txt;
-      txt = "";
-      i++;
-    }
-})
-.catch(err => {
-	console.error(err);
-});
-}
-
-function toggleNav(id) {
-    var updateElement1 = document.getElementById(id);
-    //toggle adds a class if it's not there or removes it if it is.
-    updateElement1.classList.toggle("open");
-}
+document.getElementById("year").innerHTML = options; 
 
     </script>
-    <!--<script src="js/index.js" type="module"></script> -->
 </body>
 
 </html>

@@ -2,12 +2,27 @@
 
 :root {
     --primary-color: #c1292e;
-    --secondary-color:  rgb(83, 44, 44);
+    --secondary-color:  rgba(83, 44, 44, 0.842);
     --accent1-color: #f1d302;
     --accent2-color: #020100;
-    --heading-font: Trebuchet MS;;
+    --heading-font: Trebuchet MS;
     --paragraph-font: Lato, Helvetica, sans-serif
 }
+body {
+    animation: fadeIn 2s ease;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+
 
 body{
     background: url(../img/hitter-5.jpg) repeat;
@@ -30,18 +45,17 @@ h1, h2, h3, h4, h5, h6 {
 
 label {
     color: var(--accent1-color);
-    padding: 1em;
 }
 
 h1{
     font-size:4em;
-    padding: 1rem;
+    
 }
 header {
     text-align: center;
     color: var(--accent2-color);
     background-color: var(--secondary-color);
-    padding-top: 10px;
+    padding-top: 20px;
     padding-bottom:10px;
 }
 
@@ -139,14 +153,13 @@ option:checked { color: red; }
 .players{
     display:flex;
     justify-content: space-evenly;
+    padding-top: 40px;
 
 }
 
 
 .button {
-	
 	border: solid 3px var(--primary-color);
-	display:inline-block;
 	cursor:pointer;
 	color: var(--accent1-color);
     background-color: var(--accent2-color);
@@ -156,7 +169,7 @@ option:checked { color: red; }
 	font-style:italic;
 	padding:24px 27px;
 	text-decoration:none;
-    margin-left:1em;
+    margin-left: 15px;
 }
 
 .button:hover{
@@ -172,6 +185,10 @@ option:checked { color: red; }
 .picture{
     max-width: 100%;
     max-height: 100%;
+}
+
+.picture.border{
+    border-radius:5%;
 }
 
 .card-border{
@@ -203,8 +220,28 @@ table, th, td {
 }
 
 
+
+.players div h2{
+    padding-left:20%
+}
+#form{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 12%;
+    margin-left: 13%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+
 @media only screen and (max-width: 650px) {
     .players {
         display:block;
+        margin-left: 15%;
+    }
+    #form {
+        display:block;
     }
   }
+
